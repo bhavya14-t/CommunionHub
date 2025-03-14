@@ -98,3 +98,21 @@
   z-index: 2;
 }
 
+select{
+  padding: 10px;
+  font-size: 18px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+select:hover{
+  background-color: skyblue;
+  color: black;
+}
+
+select:active{
+  background-color: #e6e6e6;
+}
+

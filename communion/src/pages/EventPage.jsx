@@ -1,19 +1,40 @@
-import React from "react";
+import React, {useState} from "react";
 import {Card} from "./Card";
 import {eventsData} from "./eventsData";
 import {EventForm} from "./EventForm";
 
-const EventPage = () => {
+export const EventPage = () => {
+    const [selectedCategory, setSelectedCategory] = useState('all');
+    const [events, setEvents] = useState(eventsData);
+
+    const handleCategoryChange = (event) => {
+        setSelectedCategory(event.target.value);
+    };
+
+    const filteredEvents = events.filter((event) => {
+        if (selectedCategory === 'all') {
+            return true;
+        }
+        return event.category === selectedCategory;
+    });
+
     return(
         <div className="event-page">
         <h1> Events </h1>
+        <select value={selectedCategory}
+        onChange={handleCategoryChange}>
+            <option value="all">All</option>
+            <option value="social"> Social </option>
+            <option value="religious"> Religious </option>
+            <option value="charity"> Charity</option>
+        </select>
         <div className="cards-container">
-        {eventsData.map((event) => (
+        {filteredEvents.map((event) => (
             <Card key = {event.id}
             event={event} />
         ))}
         </div>
-        <EventForm addEvent={addEvent} />
+        <EventForm addEvent={(event) => setEvents([...events, event])} />
         </div>
     );
 };
