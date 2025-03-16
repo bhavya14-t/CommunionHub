@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./EventForm.css";
 
 export const EventForm = ({ addEvent }) => {
 
@@ -7,6 +8,7 @@ export const EventForm = ({ addEvent }) => {
     const [eventDate, setEventDate] = useState('');
     const [eventTime, setEventTime] = useState('');
     const [eventImage, setEventImage] = useState(null);
+    const [showForm, setShowForm] = useState(false);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;

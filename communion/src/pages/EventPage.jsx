@@ -1,12 +1,12 @@
 import React, {useState} from "react";
-import {Card} from "./Card";
-import {eventsData} from "./eventsData";
-import {EventForm} from "./EventForm";
+import { Card } from "../components/UI/Card";
+import { eventsData } from "../components/utils/eventsData";
+import { EventForm } from "../components/UI/EventForm";
 
 export const EventPage = () => {
     const [selectedCategory, setSelectedCategory] = useState('all');
     const [events, setEvents] = useState(eventsData);
-
+    
     const handleCategoryChange = (event) => {
         setSelectedCategory(event.target.value);
     };
